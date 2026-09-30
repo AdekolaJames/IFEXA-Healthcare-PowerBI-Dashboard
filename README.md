@@ -1,4 +1,4 @@
-# IFEXA Healthcare Performance & Patient Analytics Dashboard
+# Healthcare Performance & Patient Analytics Dashboard
 
 ## Project Overview
 
@@ -122,22 +122,6 @@ The supplied dataset contained no blank values or duplicate complete records in 
 
 The project uses a simple star-style model with Patient_Visits as the central fact table.
 
-### Model Structure
-
-```text
-                 Date_Table
-                     |
-                     | 1 : *
-                     |
-                     v
-               Patient_Visits
-                     ^
-                     |
-                     | 1 : *
-                     |
-                State_Targets
-```
-
 ### Relationships
 
 * Date_Table[Date] → Patient_Visits[Visit_Date]
@@ -174,43 +158,6 @@ Key measures include:
 * New Patients
 * Returning Patients
 * Average Visits per Patient
-
-### Example
-
-```DAX
-Total Patients =
-DISTINCTCOUNT(Patient_Visits[Patient_ID])
-```
-
-```DAX
-Total Visits =
-SUM(Patient_Visits[Visit_Count])
-```
-
-```DAX
-Total Profit =
-[Total Revenue] - [Total Cost]
-```
-
-```DAX
-Profit Margin % =
-DIVIDE(
-    [Total Profit],
-    [Total Revenue],
-    0
-)
-```
-
-```DAX
-Average Revenue Per Patient =
-DIVIDE(
-    [Total Revenue],
-    [Total Patients],
-    0
-)
-```
-
----
 
 ## Dashboard Pages
 
@@ -312,9 +259,9 @@ A department drill-through page allows users to move from a high-level departmen
 
 A reusable Healthcare Performance tooltip provides additional information when users hover over selected visuals.
 
-### Page Navigation
+### Key Business Insights & Recommendations
 
-Navigation allows users to move between the five dashboard pages.
+This page gives us insight into the performance of different sectors of the business and reccommendation into how to make things better.
 
 ### Bookmarks
 
@@ -356,14 +303,6 @@ This demonstrates that absolute revenue and target achievement provide different
 
 Management should monitor whether operational capacity can continue supporting the department's high level of activity.
 
-### 6. Waiting Time and Satisfaction
-
-The dataset shows almost no linear relationship between waiting time and satisfaction.
-
-This suggests that waiting time alone does not explain differences in patient satisfaction in this dataset. Other measurable patient-experience factors should therefore also be considered.
-
----
-
 ## Recommendations
 
 Based on the analysis, management should consider:
@@ -402,48 +341,6 @@ As a result, year-over-year revenue comparisons with 2024 cannot be meaningfully
 The Previous Year Revenue and YoY Revenue Growth measures were created to satisfy the analytical requirements, but their interpretation is limited by the one-year dataset.
 
 The annual state revenue targets are compared with annual 2025 revenue. No monthly target allocation was assumed because the supplied target table contains annual targets only.
-
----
-
-## Screenshots
-
-### Executive Overview
-
-![Executive Overview](screenshots/executive-overview.png)
-
-### Patient Analysis
-
-![Patient Analysis](screenshots/patient-analysis.png)
-
-### Hospital Operations
-
-![Hospital Operations](screenshots/hospital-operations.png)
-
-### Financial Performance
-
-![Financial Performance](screenshots/financial-performance.png)
-
-### Patient Experience
-
-![Patient Experience](screenshots/patient-experience.png)
-
----
-
-## Project Files
-
-The repository contains:
-
-```text
-dataset/
-powerbi/
-screenshots/
-presentation/
-README.md
-```
-
-The Power BI file contains the completed interactive dashboard and analytical model.
-
----
 
 ## Conclusion
 
